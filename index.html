@@ -2,292 +2,307 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Social Services Portal</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SocialBoost — Social Services</title>
 
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;
- background:#f1f4f8;
- color:#17202a;
+ background:#07090d;
+ color:#e8edf5;
  font-family:Arial,Helvetica,sans-serif;
 }
 header{
- background:#fff;
- border-bottom:1px solid #dce1e7;
  position:sticky;
  top:0;
  z-index:20;
+ background:#0b0f16;
+ border-bottom:1px solid #202936;
+ padding:14px;
 }
 .nav{
- max-width:900px;
+ max-width:1200px;
  margin:auto;
- padding:15px;
  display:flex;
- justify-content:space-between;
  align-items:center;
+ justify-content:space-between;
+ gap:10px;
 }
-.logo{font-size:21px;font-weight:800}
-.logo span{color:#2864e8}
+.logo{
+ font-size:21px;
+ font-weight:800;
+ color:#fff;
+}
+.logo span{color:#00e5ff}
 .status{
- font-size:10px;
- background:#e8f7ed;
- color:#17733c;
+ font-size:11px;
+ color:#56ff9b;
+ border:1px solid #1d5c42;
  padding:6px 9px;
  border-radius:20px;
 }
-.wrap{max-width:900px;margin:auto;padding:15px}
-
+.container{
+ max-width:1200px;
+ margin:auto;
+ padding:18px;
+}
 .hero{
- background:#fff;
- border:1px solid #dce2e8;
- border-radius:15px;
- padding:20px;
- margin:15px 0;
+ background:linear-gradient(135deg,#111827,#08131a);
+ border:1px solid #263443;
+ border-radius:18px;
+ padding:25px;
+ margin-bottom:18px;
 }
-.hero h1{margin:0 0 7px;font-size:24px}
-.hero p{margin:0;color:#6d7887;line-height:1.5;font-size:13px}
-
-.security{
- margin-top:15px;
- padding:12px;
- border-radius:10px;
- background:#fff7e7;
- border:1px solid #e5b85c;
- font-size:12px;
- line-height:1.55;
+.hero h1{
+ margin:0 0 8px;
+ font-size:31px;
 }
-.danger{
- background:#fff0f0;
- border:1px solid #e68b91;
- color:#8d2028;
+.hero p{
+ color:#9eabbc;
+ margin:0;
+ line-height:1.5;
+}
+.notice{
+ margin-top:18px;
+ background:#16130b;
+ border:1px solid #67511c;
+ color:#e7cf77;
  padding:12px;
  border-radius:10px;
  font-size:12px;
- line-height:1.55;
- margin:12px 0;
 }
-
-.search{
- width:100%;
- padding:14px;
- border:1px solid #cfd6df;
- border-radius:10px;
- background:white;
- font-size:14px;
+.stats{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:10px;
+ margin:18px 0;
+}
+.stat{
+ background:#0d121a;
+ border:1px solid #202b38;
+ border-radius:12px;
+ padding:15px;
+}
+.stat b{
+ display:block;
+ font-size:20px;
+ color:#fff;
+ margin-bottom:4px;
+}
+.stat small{color:#7f8b9b}
+.controls{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-bottom:15px;
+}
+input,select,button{
+ font:inherit;
+}
+input,select{
+ background:#0d121a;
+ color:#fff;
+ border:1px solid #293544;
+ border-radius:9px;
+ padding:11px 13px;
  outline:none;
 }
-
+#search{flex:1;min-width:220px}
+button{
+ border:0;
+ border-radius:9px;
+ padding:11px 15px;
+ cursor:pointer;
+ color:#fff;
+ background:#087f91;
+}
+button:hover{filter:brightness(1.15)}
 .categories{
  display:flex;
  gap:7px;
  overflow-x:auto;
- margin:12px 0;
- padding-bottom:3px;
+ padding-bottom:10px;
+ margin-bottom:10px;
 }
 .cat{
  white-space:nowrap;
- border:1px solid #d3d9e1;
- background:#fff;
- padding:9px 12px;
- border-radius:20px;
- font-size:11px;
- cursor:pointer;
+ background:#101620;
+ border:1px solid #253140;
+ color:#aeb9c8;
 }
 .cat.active{
- background:#2864e8;
- color:white;
- border-color:#2864e8;
+ background:#087f91;
+ color:#fff;
+ border-color:#08aac0;
 }
-
-.category-title{
- margin:25px 0 10px;
- font-size:18px;
- font-weight:800;
+.services{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
 }
-
-.service{
- background:#fff;
- border:1px solid #dce2e8;
- border-radius:12px;
- padding:14px;
- margin:8px 0;
- cursor:pointer;
+.card{
+ background:#0c1118;
+ border:1px solid #202b38;
+ border-radius:13px;
+ padding:15px;
  transition:.15s;
 }
-.service:active{
- transform:scale(.985);
- background:#f8faff;
+.card:hover{
+ border-color:#087f91;
+ transform:translateY(-2px);
 }
-.row{
- display:flex;
- justify-content:space-between;
- gap:10px;
+.badge{
+ display:inline-block;
+ font-size:10px;
+ color:#70eaff;
+ background:#09242a;
+ border:1px solid #124752;
+ padding:4px 7px;
+ border-radius:20px;
+ margin-bottom:9px;
 }
-.service-name{
- font-weight:700;
- font-size:14px;
-}
-.price{
- color:#2864e8;
- font-weight:800;
- white-space:nowrap;
+.card h3{
+ font-size:15px;
+ margin:3px 0 8px;
+ line-height:1.35;
 }
 .meta{
- color:#7b8694;
+ color:#778495;
  font-size:11px;
- margin-top:6px;
+ margin-bottom:10px;
 }
-.service-id{
- color:#9aa3ae;
- font-size:9px;
- margin-top:7px;
-}
-
-#order,#restricted{display:none}
-
-.back{
- border:0;
- background:#e8edf3;
- color:#263442;
- padding:12px;
- border-radius:9px;
- width:100%;
- margin-top:10px;
+.price{
+ font-size:18px;
  font-weight:bold;
+ margin-bottom:12px;
 }
-
-.order-card{
- background:#fff;
- border:1px solid #d7dee6;
- border-radius:15px;
- padding:18px;
- margin-top:18px;
+.price span{
+ color:#778495;
+ font-size:11px;
+ font-weight:normal;
 }
+.card button{width:100%}
 
-.order-card h2{margin-top:0}
-
-.selected{
- background:#f5f7fa;
- border:1px solid #e0e5eb;
- border-radius:10px;
- padding:13px;
- margin:12px 0;
+.overlay{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.82);
+ z-index:50;
+ padding:20px;
+ overflow:auto;
 }
-
+.modal{
+ max-width:520px;
+ margin:50px auto;
+ background:#0b1017;
+ border:1px solid #293646;
+ border-radius:16px;
+ padding:20px;
+}
+.modal h2{margin-top:0}
+.close{
+ float:right;
+ background:#252d38;
+}
 .field{
- margin:14px 0;
+ margin:13px 0;
 }
 .field label{
  display:block;
  font-size:11px;
- font-weight:bold;
+ color:#8794a5;
  margin-bottom:6px;
- color:#566170;
 }
-.field input,
-.field select{
- width:100%;
- padding:13px;
- border:1px solid #ccd4dd;
- border-radius:8px;
- background:#f9fafb;
-}
-.field input:disabled,
-.field select:disabled{
- opacity:.7;
-}
-
-.fake-progress{
- height:7px;
- background:#e8ecf1;
+.field input,.field select{width:100%}
+.summary{
+ background:#101722;
  border-radius:10px;
- overflow:hidden;
+ padding:14px;
  margin:15px 0;
 }
-.fake-progress div{
- width:68%;
- height:100%;
- background:#2864e8;
-}
-
-.primary{
- width:100%;
- border:0;
- background:#2864e8;
- color:white;
- padding:14px;
- border-radius:9px;
- font-weight:bold;
-}
-
-.login-box{
- margin-top:18px;
- padding-top:15px;
- border-top:1px solid #e1e5ea;
-}
-.login-btn{
- width:100%;
- padding:12px;
- margin-top:7px;
- border:1px solid #d5dbe2;
- border-radius:8px;
- background:#f5f6f8;
- color:#7a838e;
- font-weight:bold;
- cursor:not-allowed;
-}
-
-.restricted-wrap{
- min-height:85vh;
+.summary div{
  display:flex;
- justify-content:center;
- align-items:center;
+ justify-content:space-between;
+ padding:4px 0;
+ color:#aab5c3;
 }
-.restricted-card{
- max-width:600px;
- background:#fff;
- border:1px solid #d8dfe7;
- border-radius:16px;
- padding:25px;
- text-align:center;
-}
-.warning-icon{font-size:55px}
-.restricted-card h1{margin:8px 0}
-.restricted-card p{
- color:#697586;
- line-height:1.6;
- font-size:13px;
-}
-.alert{
- text-align:left;
- background:#fff0f0;
- border:1px solid #e2767d;
- color:#8e2028;
- border-radius:12px;
- padding:16px;
- font-size:12px;
- line-height:1.65;
- margin:18px 0;
-}
-.code{
- background:#151a22;
- color:#aeb8c6;
- border-radius:8px;
- padding:13px;
- text-align:left;
- font-family:monospace;
- font-size:10px;
+.summary strong{color:#fff}
+.wallet{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#07090d;
+ z-index:40;
  overflow:auto;
 }
-footer{
- text-align:center;
- padding:30px;
- color:#8a94a3;
- font-size:10px;
+.wallet-inner{
+ max-width:600px;
+ margin:auto;
+ padding:20px;
 }
-.hidden{display:none}
+.balance{
+ background:linear-gradient(135deg,#07343c,#111827);
+ border:1px solid #155765;
+ border-radius:16px;
+ padding:25px;
+ margin:15px 0;
+}
+.balance small{color:#8fa3ad}
+.balance h1{margin:8px 0}
+.recharge{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+ margin-top:15px;
+}
+.recharge button{
+ background:#111a25;
+ border:1px solid #293646;
+}
+.login{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:60;
+ background:#07090d;
+ overflow:auto;
+}
+.login-box{
+ max-width:420px;
+ margin:70px auto;
+ padding:25px;
+ background:#0d121a;
+ border:1px solid #273442;
+ border-radius:16px;
+}
+.login-box input{
+ width:100%;
+ margin-bottom:10px;
+}
+.footer{
+ text-align:center;
+ color:#5e6978;
+ padding:30px 10px;
+ font-size:11px;
+}
+.empty{
+ text-align:center;
+ padding:50px;
+ color:#697687;
+ grid-column:1/-1;
+}
+
+@media(max-width:850px){
+ .services{grid-template-columns:repeat(2,1fr)}
+ .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+ .services{grid-template-columns:1fr}
+ .hero h1{font-size:25px}
+ .recharge{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 
@@ -300,403 +315,737 @@ footer{
  </div>
 </header>
 
-<!-- MAIN -->
+<div class="container">
 
-<div id="panel">
-<div class="wrap">
-
-<div class="hero">
+<section class="hero">
  <h1>Social Services Portal</h1>
  <p>
- Professional service management interface with
- automated order processing and service monitoring.
+ Browse social-media growth services, configure an order and view service
+ information from one interface.
  </p>
 
- <div class="security">
- 🛡️ <b>Protected Environment</b><br>
- Service endpoints are monitored for unusual activity.
- Certain operations may be restricted automatically.
+ <div class="notice">
+  ⚠️ This website is a static interface. Login and payment screens do not
+  transmit credentials or process real transactions.
+ </div>
+</section>
+
+<div class="stats">
+ <div class="stat">
+  <b id="serviceCount">600+</b>
+  <small>Services</small>
+ </div>
+ <div class="stat">
+  <b>24/7</b>
+  <small>Panel Access</small>
+ </div>
+ <div class="stat">
+  <b>Fast</b>
+  <small>Order Interface</small>
+ </div>
+ <div class="stat">
+  <b>₹243</b>
+  <small>Example / 1K</small>
  </div>
 </div>
 
-<div class="danger">
- 🔴 <b>ACCOUNT SAFETY</b><br>
- Never provide your social-media password, OTP,
- recovery code, 2FA secret, payment PIN or private
- API credentials to third-party services.
+<div class="controls">
+ <input id="search" placeholder="Search services..." oninput="render()">
+
+ <select id="sort" onchange="render()">
+  <option value="default">Sort: Default</option>
+  <option value="low">Price: Low → High</option>
+  <option value="high">Price: High → Low</option>
+ </select>
+
+ <button onclick="openWallet()">₹ Wallet</button>
+ <button onclick="openLogin()">Sign In</button>
 </div>
 
-<input id="search"
- class="search"
- placeholder="Search 60+ services..."
- oninput="searchServices()">
+<div class="categories" id="categories"></div>
 
-<div class="categories">
- <button class="cat active" onclick="filterCat('all',this)">All</button>
- <button class="cat" onclick="filterCat('Instagram',this)">Instagram</button>
- <button class="cat" onclick="filterCat('YouTube',this)">YouTube</button>
- <button class="cat" onclick="filterCat('Facebook',this)">Facebook</button>
- <button class="cat" onclick="filterCat('Telegram',this)">Telegram</button>
- <button class="cat" onclick="filterCat('TikTok',this)">TikTok</button>
- <button class="cat" onclick="filterCat('X',this)">X</button>
- <button class="cat" onclick="filterCat('Other',this)">Other</button>
+<div class="services" id="services"></div>
+
+<div class="footer">
+ SocialBoost Interface • Static catalogue
 </div>
 
-<div id="services"></div>
-
-<div class="danger">
- ⚠️ <b>FINAL SECURITY REMINDER</b><br>
- A website looking professional does not make it
- trustworthy. Never give confidential credentials
- merely because a service requests them.
-</div>
-
-<footer>
-SocialBoost Services Portal<br>
-Service availability may change without notice.
-</footer>
-
-</div>
 </div>
 
 
-<!-- ORDER PAGE -->
+<!-- ORDER MODAL -->
 
-<div id="order">
-<div class="wrap">
+<div class="overlay" id="orderOverlay">
+ <div class="modal">
 
-<div class="order-card">
+  <button class="close" onclick="closeOrder()">✕</button>
 
-<h2>Service Configuration</h2>
+  <div class="badge" id="orderCategory">SERVICE</div>
 
-<div class="selected">
- <b id="orderName"></b><br>
- <span id="orderInfo"></span>
-</div>
+  <h2 id="orderTitle">Service</h2>
 
-<div class="security">
- 🔐 <b>Secure order configuration</b><br>
- Only public information should be used.
- Passwords and authentication secrets are never
- required.
-</div>
+  <div class="meta" id="orderId"></div>
 
-<div class="field">
-<label>SERVICE ID</label>
-<input id="serviceId" disabled>
-</div>
+  <div class="field">
+   <label>Quantity</label>
+   <input id="quantity" type="number" value="1000" min="100"
+          oninput="calculate()">
+  </div>
 
-<div class="field">
-<label>TARGET URL</label>
-<input placeholder="https://..." disabled>
-</div>
+  <div class="field">
+   <label>Target / Link</label>
+   <input placeholder="https://example.com/...">
+  </div>
 
-<div class="field">
-<label>QUANTITY</label>
-<select disabled>
-<option>1,000</option>
-<option>2,000</option>
-<option>5,000</option>
-<option>10,000</option>
-</select>
-</div>
+  <div class="field">
+   <label>Start option</label>
+   <select>
+    <option>Normal Start</option>
+    <option>Fast Start</option>
+    <option>Gradual Start</option>
+   </select>
+  </div>
 
-<div class="field">
-<label>DELIVERY MODE</label>
-<select disabled>
-<option>Standard delivery</option>
-<option>High priority</option>
-<option>Gradual delivery</option>
-</select>
-</div>
+  <div class="summary">
+   <div>
+    <span>Rate / 1K</span>
+    <strong id="rate">₹243</strong>
+   </div>
+   <div>
+    <span>Quantity</span>
+    <strong id="quantityDisplay">1,000</strong>
+   </div>
+   <div>
+    <span>Total</span>
+    <strong id="total">₹243.00</strong>
+   </div>
+  </div>
 
-<div class="fake-progress">
-<div></div>
-</div>
+  <button style="width:100%" onclick="showRestricted()">
+   Continue Order
+  </button>
 
-<div class="danger">
- 🔴 <b>Credential protection</b><br>
- Do not enter a password, OTP, recovery code,
- API secret or payment PIN into this form.
  </div>
-
-<div class="login-box">
- <b style="font-size:13px">Optional account access</b>
-
- <button class="login-btn" disabled>
-  Continue with Google — unavailable
- </button>
-
- <button class="login-btn" disabled>
-  Continue with Apple — unavailable
- </button>
-</div>
-
-<button class="primary" onclick="restricted()">
- CONTINUE TO ORDER
-</button>
-
-<button class="back" onclick="backPanel()">
- ← BACK TO SERVICES
-</button>
-
-</div>
-</div>
 </div>
 
 
-<!-- RESTRICTED -->
+<!-- WALLET -->
 
-<div id="restricted">
+<div class="wallet" id="wallet">
 
-<div class="restricted-wrap">
-<div class="restricted-card">
+ <div class="wallet-inner">
 
-<div class="warning-icon">⚠️</div>
+  <button onclick="closeWallet()">← Back</button>
 
-<h1>Service Restricted</h1>
+  <div class="balance">
+   <small>AVAILABLE BALANCE</small>
+   <h1>₹0.00</h1>
+   <small>Wallet ID: SB-LOCAL-001</small>
+  </div>
 
-<p>
- The requested service endpoint cannot currently
- process this operation.
-</p>
+  <h2>Recharge Wallet</h2>
 
-<div class="code">
-STATUS: ACCESS_RESTRICTED<br>
-ENDPOINT: TEMPORARILY_DISABLED<br>
-SECURITY: ELEVATED<br>
-REQUEST: BLOCKED<br>
-CODE: SRV-403-SEC
+  <p style="color:#778495;font-size:13px">
+   Select an amount to open the recharge interface.
+  </p>
+
+  <div class="recharge">
+   <button onclick="recharge(50)">₹50</button>
+   <button onclick="recharge(100)">₹100</button>
+   <button onclick="recharge(250)">₹250</button>
+   <button onclick="recharge(500)">₹500</button>
+   <button onclick="recharge(1000)">₹1,000</button>
+   <button onclick="recharge(2500)">₹2,500</button>
+  </div>
+
+  <div id="paymentArea"></div>
+
+ </div>
 </div>
 
-<div class="alert">
- 🔴 <b>SECURITY WARNING</b><br><br>
 
- Never give your password, OTP, 2FA code,
- recovery code, payment PIN or private API key
- to an unknown website.
+<!-- LOGIN -->
 
- <br><br>
+<div class="login" id="login">
 
- ⚠️ Suspicious third-party services can expose
- accounts and personal information. Dark-web
- marketplaces and unknown services can create
- serious privacy and security risks.
+ <div class="login-box">
 
- <br><br>
+  <button onclick="closeLogin()">← Back</button>
 
- <b>This page has not accessed or hacked your device.</b>
- This is a general online-safety warning.
-</div>
+  <h2>Sign In</h2>
 
-<button class="primary" onclick="backPanel()">
- RETURN TO SERVICES
-</button>
+  <p style="font-size:12px;color:#778495">
+   Interface only — entered information is not submitted or stored.
+  </p>
 
-</div>
-</div>
+  <input placeholder="Username">
+  <input type="password" placeholder="Password">
+
+  <button style="width:100%" onclick="loginMessage()">
+   Sign In
+  </button>
+
+  <div id="loginMessage"></div>
+
+ </div>
 </div>
 
 
 <script>
 
-const services = [
+/* =========================================================
+   SERVICE DATABASE GENERATOR
+   ========================================================= */
 
-["Instagram","Followers 1K","₹233","Followers","Worldwide"],
-["Instagram","Followers 2K","₹466","Followers","Worldwide"],
-["Instagram","Followers 5K","₹1,165","Followers","Worldwide"],
-["Instagram","Likes 1K","₹233","Likes","Fast"],
-["Instagram","Likes 2K","₹466","Likes","Fast"],
-["Instagram","Likes 5K","₹1,165","Likes","Fast"],
-["Instagram","Views 1K","₹233","Views","Worldwide"],
-["Instagram","Views 5K","₹1,165","Views","Worldwide"],
-["Instagram","Comments 100","₹233","Comments","Custom"],
-["Instagram","Saves 1K","₹233","Saves","Worldwide"],
+const platforms = {
 
-["YouTube","Subscribers 1K","₹233","Subscribers","Worldwide"],
-["YouTube","Subscribers 2K","₹466","Subscribers","Worldwide"],
-["YouTube","Subscribers 5K","₹1,165","Subscribers","Worldwide"],
-["YouTube","Views 1K","₹233","Views","Worldwide"],
-["YouTube","Views 5K","₹1,165","Views","Worldwide"],
-["YouTube","Views 10K","₹2,330","Views","Worldwide"],
-["YouTube","Likes 1K","₹233","Likes","Worldwide"],
-["YouTube","Likes 2K","₹466","Likes","Worldwide"],
-["YouTube","Comments 100","₹233","Comments","Custom"],
-["YouTube","Watch Time","₹466","Watch Time","Gradual"],
+ Instagram:[
+  "Followers",
+  "Likes",
+  "Video Views",
+  "Reels Views",
+  "Comments",
+  "Story Views",
+  "Story Reactions",
+  "Saves",
+  "Shares",
+  "Profile Visits",
+  "Live Views",
+  "Reels Likes",
+  "Reels Shares",
+  "Reels Saves",
+  "Post Engagement"
+ ],
 
-["Facebook","Followers 1K","₹233","Followers","Worldwide"],
-["Facebook","Followers 2K","₹466","Followers","Worldwide"],
-["Facebook","Likes 1K","₹233","Likes","Worldwide"],
-["Facebook","Page Likes 1K","₹233","Page Likes","Worldwide"],
-["Facebook","Post Reactions 1K","₹233","Reactions","Worldwide"],
-["Facebook","Video Views 1K","₹233","Views","Fast"],
-["Facebook","Comments 100","₹233","Comments","Custom"],
-["Facebook","Shares 1K","₹233","Shares","Worldwide"],
+ YouTube:[
+  "Subscribers",
+  "Video Views",
+  "Likes",
+  "Comments",
+  "Shorts Views",
+  "Shorts Likes",
+  "Shorts Comments",
+  "Live Views",
+  "Channel Engagement",
+  "Video Shares",
+  "Playlist Views",
+  "Video Saves"
+ ],
 
-["Telegram","Members 1K","₹233","Members","Worldwide"],
-["Telegram","Members 2K","₹466","Members","Worldwide"],
-["Telegram","Members 5K","₹1,165","Members","Worldwide"],
-["Telegram","Post Views 1K","₹233","Views","Fast"],
-["Telegram","Post Views 5K","₹1,165","Views","Fast"],
-["Telegram","Reactions 1K","₹233","Reactions","Worldwide"],
-["Telegram","Comments 100","₹233","Comments","Custom"],
-["Telegram","Channel Boost","₹466","Boost","Standard"],
+ TikTok:[
+  "Followers",
+  "Likes",
+  "Views",
+  "Comments",
+  "Shares",
+  "Saves",
+  "Profile Visits",
+  "Live Views",
+  "Video Engagement",
+  "Favorites"
+ ],
 
-["TikTok","Followers 1K","₹233","Followers","Worldwide"],
-["TikTok","Followers 2K","₹466","Followers","Worldwide"],
-["TikTok","Likes 1K","₹233","Likes","Fast"],
-["TikTok","Likes 5K","₹1,165","Likes","Fast"],
-["TikTok","Views 1K","₹233","Views","Worldwide"],
-["TikTok","Views 10K","₹2,330","Views","Worldwide"],
-["TikTok","Shares 1K","₹233","Shares","Worldwide"],
-["TikTok","Comments 100","₹233","Comments","Custom"],
+ Facebook:[
+  "Page Likes",
+  "Page Followers",
+  "Post Likes",
+  "Post Reactions",
+  "Video Views",
+  "Comments",
+  "Shares",
+  "Story Views",
+  "Profile Followers",
+  "Live Views"
+ ],
 
-["X","Followers 1K","₹233","Followers","Worldwide"],
-["X","Followers 2K","₹466","Followers","Worldwide"],
-["X","Likes 1K","₹233","Likes","Worldwide"],
-["X","Views 1K","₹233","Views","Worldwide"],
-["X","Reposts 1K","₹233","Reposts","Worldwide"],
-["X","Bookmarks 1K","₹233","Bookmarks","Worldwide"],
-["X","Comments 100","₹233","Comments","Custom"],
+ Telegram:[
+  "Channel Members",
+  "Group Members",
+  "Post Views",
+  "Post Reactions",
+  "Channel Views",
+  "Poll Votes",
+  "Message Views",
+  "Engagement"
+ ],
 
-["Other","Discord Members 1K","₹233","Members","Worldwide"],
-["Other","Twitch Followers 1K","₹233","Followers","Worldwide"],
-["Other","Reddit Followers 1K","₹233","Followers","Worldwide"],
-["Other","Spotify Plays 1K","₹233","Plays","Worldwide"],
-["Other","Podcast Plays 1K","₹233","Plays","Worldwide"],
-["Other","Website Traffic 1K","₹233","Traffic","Worldwide"],
-["Other","Live Viewers 100","₹233","Viewers","Standard"],
-["Other","Profile Visits 1K","₹233","Visits","Worldwide"],
-["Other","Engagement Package 1K","₹466","Engagement","Mixed"],
-["Other","Premium Growth Package","₹1,165","Package","Standard"]
+ X:[
+  "Followers",
+  "Likes",
+  "Post Views",
+  "Reposts",
+  "Comments",
+  "Bookmarks",
+  "Profile Visits",
+  "Engagement"
+ ],
+
+ Spotify:[
+  "Track Streams",
+  "Followers",
+  "Playlist Streams",
+  "Playlist Followers",
+  "Artist Followers",
+  "Track Saves",
+  "Monthly Listeners"
+ ],
+
+ Discord:[
+  "Server Members",
+  "Server Engagement",
+  "Channel Activity",
+  "Community Members"
+ ],
+
+ Website:[
+  "Website Visits",
+  "Page Views",
+  "Traffic",
+  "Referral Visits",
+  "Search Visits",
+  "Landing Page Visits",
+  "Article Visits",
+  "Site Engagement"
+ ],
+
+ Google:[
+  "Business Profile Visits",
+  "Profile Actions",
+  "Map Views",
+  "Search Impressions",
+  "Website Clicks",
+  "Call Actions",
+  "Direction Requests"
+ ]
+};
+
+
+/* =========================================================
+   SERVICE VARIANTS
+   ========================================================= */
+
+const variants = [
+ "Standard",
+ "Premium",
+ "High Quality",
+ "Fast",
+ "Ultra Fast",
+ "Gradual",
+ "Stable",
+ "Worldwide",
+ "Global",
+ "Targeted",
+ "Organic Style",
+ "High Retention",
+ "Slow Start",
+ "Instant Start",
+ "Advanced",
+ "Professional",
+ "Economy",
+ "Low Cost",
+ "Express",
+ "Priority"
 ];
 
-let currentCategory="all";
+const services=[];
 
-function render(list){
+let id=1001;
+
+for(const platform in platforms){
+
+ const actions=platforms[platform];
+
+ actions.forEach(action=>{
+
+  variants.forEach((variant,index)=>{
+
+   /*
+    Generates many catalogue entries while keeping
+    pricing readable.
+   */
+
+   let base=243;
+
+   if(index%5===1) base=310;
+   if(index%5===2) base=395;
+   if(index%5===3) base=475;
+   if(index%5===4) base=560;
+
+   services.push({
+    id:"SB"+id++,
+    platform,
+    name:`${platform} ${action} — ${variant}`,
+    rate:base
+   });
+
+  });
+
+ });
+
+}
+
+
+/* Additional catalogue entries */
+
+const extraPlatforms=[
+ "Instagram",
+ "YouTube",
+ "TikTok",
+ "Facebook",
+ "Telegram",
+ "X",
+ "Spotify",
+ "Discord",
+ "Website",
+ "Google"
+];
+
+const extraTypes=[
+ "Starter Package",
+ "Growth Package",
+ "Creator Package",
+ "Business Package",
+ "Premium Package",
+ "Professional Package",
+ "Engagement Package",
+ "Visibility Package",
+ "Reach Package",
+ "Advanced Package"
+];
+
+extraPlatforms.forEach(platform=>{
+ extraTypes.forEach(type=>{
+  for(let i=1;i<=3;i++){
+
+   services.push({
+    id:"SB"+id++,
+    platform,
+    name:`${platform} ${type} ${i}`,
+    rate:243+(i*57)
+   });
+
+  }
+ });
+});
+
+
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
+
+const categoryBox=document.getElementById("categories");
+
+const allCats=["All",...Object.keys(platforms)];
+
+allCats.forEach(cat=>{
+
+ const btn=document.createElement("button");
+
+ btn.className="cat"+(cat==="All"?" active":"");
+ btn.textContent=cat;
+
+ btn.onclick=()=>{
+
+  document.querySelectorAll(".cat")
+   .forEach(x=>x.classList.remove("active"));
+
+  btn.classList.add("active");
+
+  selectedCategory=cat;
+
+  render();
+ };
+
+ categoryBox.appendChild(btn);
+
+});
+
+let selectedCategory="All";
+
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+
+function render(){
 
  const box=document.getElementById("services");
+
+ const search=
+  document.getElementById("search")
+  .value
+  .toLowerCase()
+  .trim();
+
+ const sort=document.getElementById("sort").value;
+
+ let data=services.filter(s=>{
+
+  const categoryMatch=
+   selectedCategory==="All" ||
+   s.platform===selectedCategory;
+
+  const searchMatch=
+   !search ||
+   s.name.toLowerCase().includes(search) ||
+   s.id.toLowerCase().includes(search);
+
+  return categoryMatch && searchMatch;
+
+ });
+
+ if(sort==="low")
+  data.sort((a,b)=>a.rate-b.rate);
+
+ if(sort==="high")
+  data.sort((a,b)=>b.rate-a.rate);
+
+
  box.innerHTML="";
 
- let last="";
+ if(data.length===0){
 
- list.forEach((s,i)=>{
+  box.innerHTML=
+   `<div class="empty">No services found.</div>`;
 
-   if(s[0]!==last){
-    box.innerHTML+=
-    '<div class="category-title">'+
-    icon(s[0])+" "+s[0]+"</div>";
-    last=s[0];
-   }
+  return;
+ }
 
-   const id="SB-"+String(i+1).padStart(4,"0");
 
-   box.innerHTML+=`
-   <div class="service"
-    data-cat="${s[0]}"
-    data-search="${s.join(" ").toLowerCase()}"
-    onclick="openOrder(${i})">
+ data.forEach(service=>{
 
-    <div class="row">
-     <div class="service-name">${s[1]}</div>
-     <div class="price">${s[2]}</div>
-    </div>
+  const card=document.createElement("div");
 
-    <div class="meta">
-     ${s[3]} • ${s[4]}
-    </div>
+  card.className="card";
 
-    <div class="service-id">
-     SERVICE ID: ${id}
-    </div>
+  card.innerHTML=`
 
-   </div>`;
- });
-}
+   <div class="badge">${service.platform}</div>
 
-function icon(cat){
- if(cat==="Instagram")return"📸";
- if(cat==="YouTube")return"▶️";
- if(cat==="Facebook")return"🔵";
- if(cat==="Telegram")return"✈️";
- if(cat==="TikTok")return"🎵";
- if(cat==="X")return"𝕏";
- return"🌐";
-}
+   <h3>${escapeHTML(service.name)}</h3>
 
-function filterCat(cat,btn){
+   <div class="meta">
+    Service ID: ${service.id}
+   </div>
 
- currentCategory=cat;
+   <div class="price">
+    ₹${service.rate.toFixed(2)}
+    <span>/ 1K</span>
+   </div>
 
- document.querySelectorAll(".cat")
- .forEach(x=>x.classList.remove("active"));
+   <button onclick="openOrder('${service.id}')">
+    Configure
+   </button>
+  `;
 
- btn.classList.add("active");
+  box.appendChild(card);
 
- applySearch();
-}
-
-function searchServices(){
- applySearch();
-}
-
-function applySearch(){
-
- const q=document.getElementById("search")
- .value.toLowerCase();
-
- let list=services.filter(s=>{
-
-   const categoryOK=
-   currentCategory==="all" ||
-   s[0]===currentCategory;
-
-   const text=s.join(" ").toLowerCase();
-
-   return categoryOK && text.includes(q);
  });
 
- render(list);
+ document.getElementById("serviceCount").textContent=
+  services.length+"+";
+
 }
 
-function openOrder(index){
 
- const s=services[index];
+/* =========================================================
+   ORDER
+   ========================================================= */
 
- document.getElementById("panel").style.display="none";
- document.getElementById("order").style.display="block";
- document.getElementById("restricted").style.display="none";
+let currentService=null;
 
- document.getElementById("orderName").innerText=
- s[1];
+function openOrder(serviceId){
 
- document.getElementById("orderInfo").innerText=
- s[0]+" • "+s[2]+" • "+s[4];
+ currentService=
+  services.find(s=>s.id===serviceId);
 
- document.getElementById("serviceId").value=
- "SB-"+String(index+1).padStart(4,"0");
+ if(!currentService)return;
 
- window.scrollTo(0,0);
+ document.getElementById("orderCategory")
+  .textContent=currentService.platform;
+
+ document.getElementById("orderTitle")
+  .textContent=currentService.name;
+
+ document.getElementById("orderId")
+  .textContent="Service ID: "+currentService.id;
+
+ document.getElementById("rate")
+  .textContent="₹"+currentService.rate.toFixed(2);
+
+ document.getElementById("quantity").value=1000;
+
+ document.getElementById("orderOverlay")
+  .style.display="block";
+
+ calculate();
 }
 
-function restricted(){
 
- document.getElementById("order").style.display="none";
- document.getElementById("restricted").style.display="block";
+function closeOrder(){
 
- window.scrollTo(0,0);
+ document.getElementById("orderOverlay")
+  .style.display="none";
+
 }
 
-function backPanel(){
 
- document.getElementById("restricted").style.display="none";
- document.getElementById("order").style.display="none";
- document.getElementById("panel").style.display="block";
+function calculate(){
 
- window.scrollTo(0,0);
+ if(!currentService)return;
+
+ let q=parseInt(
+  document.getElementById("quantity").value
+ )||0;
+
+ let total=(q/1000)*currentService.rate;
+
+ document.getElementById("quantityDisplay")
+  .textContent=q.toLocaleString();
+
+ document.getElementById("total")
+  .textContent="₹"+total.toFixed(2);
+
 }
 
-render(services);
+
+/* =========================================================
+   RESTRICTED ORDER
+   ========================================================= */
+
+function showRestricted(){
+
+ closeOrder();
+
+ alert(
+  "ORDER STATUS\n\n"+
+  "Service configuration received.\n\n"+
+  "Order processing is unavailable in this interface."
+ );
+
+}
+
+
+/* =========================================================
+   WALLET
+   ========================================================= */
+
+function openWallet(){
+
+ document.getElementById("wallet")
+  .style.display="block";
+
+}
+
+function closeWallet(){
+
+ document.getElementById("wallet")
+  .style.display="none";
+
+ document.getElementById("paymentArea")
+  .innerHTML="";
+
+}
+
+
+function recharge(amount){
+
+ const area=document.getElementById("paymentArea");
+
+ area.innerHTML=`
+
+  <div class="summary" style="margin-top:20px">
+
+   <h3>Recharge ₹${amount}</h3>
+
+   <p style="font-size:12px;color:#778495">
+    Recharge interface opened for ₹${amount}.
+    No payment is submitted or processed by this page.
+   </p>
+
+   <button style="width:100%"
+    onclick="paymentUnavailable()">
+    Continue
+   </button>
+
+  </div>
+
+ `;
+
+}
+
+
+function paymentUnavailable(){
+
+ document.getElementById("paymentArea").innerHTML=`
+
+  <div class="summary">
+
+   <h3>Payment Unavailable</h3>
+
+   <p style="font-size:12px;color:#778495">
+    Payment processing is not connected to this static interface.
+   </p>
+
+  </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+function openLogin(){
+
+ document.getElementById("login")
+  .style.display="block";
+
+}
+
+function closeLogin(){
+
+ document.getElementById("login")
+  .style.display="none";
+
+}
+
+function loginMessage(){
+
+ document.getElementById("loginMessage").innerHTML=`
+
+  <div class="summary" style="margin-top:15px">
+   Sign-in processing is unavailable.
+  </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   BASIC HTML ESCAPE
+   ========================================================= */
+
+function escapeHTML(str){
+
+ return String(str)
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+render();
 
 </script>
 
