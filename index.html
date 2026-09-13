@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SocialBoost Panel</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#080b12;
+  color:#fff;
+  min-height:100vh;
+}
+
+.header{
+  padding:20px;
+  background:#111722;
+  border-bottom:1px solid #273142;
+}
+
+.logo{
+  font-size:23px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#7c5cff;
+}
+
+.container{
+  max-width:650px;
+  margin:auto;
+  padding:18px;
+}
+
+/* WARNING */
+#warning{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.warning-box{
+  width:100%;
+  max-width:500px;
+  background:#111722;
+  border:1px solid #ffb020;
+  border-radius:16px;
+  padding:28px 22px;
+  text-align:center;
+  box-shadow:0 0 30px rgba(255,176,32,.12);
+}
+
+.warning-icon{
+  font-size:55px;
+  margin-bottom:15px;
+}
+
+.warning-box h1{
+  font-size:23px;
+  margin-bottom:12px;
+}
+
+.warning-box p{
+  color:#b7becb;
+  line-height:1.6;
+  margin-bottom:22px;
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:13px 20px;
+  background:#7c5cff;
+  color:#fff;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* PANEL */
+#panel{
+  display:none;
+}
+
+.balance{
+  margin-top:20px;
+  background:linear-gradient(135deg,#171d2a,#111722);
+  border:1px solid #283244;
+  border-radius:15px;
+  padding:20px;
+}
+
+.balance small{
+  color:#8993a5;
+}
+
+.balance h2{
+  margin-top:8px;
+}
+
+.section-title{
+  margin:25px 0 12px;
+  font-size:18px;
+}
+
+.service{
+  background:#111722;
+  border:1px solid #242e3e;
+  border-radius:13px;
+  padding:16px;
+  margin-bottom:10px;
+}
+
+.service-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.service-name{
+  font-weight:bold;
+}
+
+.price{
+  color:#9b83ff;
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+.service small{
+  display:block;
+  color:#7f8999;
+  margin-top:7px;
+}
+
+/* 404 */
+#notfound{
+  display:none;
+  min-height:100vh;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
+
+.error-box{
+  max-width:500px;
+}
+
+.error-code{
+  font-size:85px;
+  font-weight:900;
+  letter-spacing:5px;
+  color:#7c5cff;
+}
+
+.error-box h2{
+  margin:5px 0 15px;
+  font-size:24px;
+}
+
+.error-box p{
+  color:#8993a5;
+  line-height:1.6;
+}
+
+.security{
+  margin-top:22px;
+  padding:14px;
+  border:1px solid #333d4e;
+  border-radius:10px;
+  color:#aab2c0;
+  font-size:13px;
+}
+
+.back{
+  margin-top:20px;
+  background:#1a2130;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SECURITY SCREEN -->
+<div id="warning">
+  <div class="warning-box">
+    <div class="warning-icon">⚠️</div>
+
+    <h1>Security Notice</h1>
+
+    <p>
+      This panel is currently operating under restricted access.
+      Automated requests and unauthorized access attempts may be
+      blocked by the administrator.
+    </p>
+
+    <button class="btn" onclick="enterPanel()">
+      I Understand — Continue
+    </button>
+  </div>
+</div>
+
+
+<!-- FAKE PANEL -->
+<div id="panel">
+
+  <div class="header">
+    <div class="logo">
+      Social<span>Boost</span> Panel
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="balance">
+      <small>Account Balance</small>
+      <h2>₹0.00</h2>
+    </div>
+
+    <div class="section-title">
+      Instagram Services
+    </div>
+
+    <div class="service">
+      <div class="service-top">
+        <div class="service-name">Instagram Followers</div>
+        <div class="price">₹456 / 1K</div>
+      </div>
+      <small>High quality followers • Start 0–30 min</small>
+    </div>
+
+    <div class="service">
+      <div class="service-top">
+        <div class="service-name">Instagram Likes</div>
+        <div class="price">₹189 / 1K</div>
+      </div>
+      <small>Fast delivery • Refill unavailable</small>
+    </div>
+
+    <div class="service">
+      <div class="service-top">
+        <div class="service-name">Instagram Views</div>
+        <div class="price">₹99 / 1K</div>
+      </div>
+      <small>Fast views • Worldwide</small>
+    </div>
+
+    <div class="section-title">
+      YouTube Services
+    </div>
+
+    <div class="service">
+      <div class="service-top">
+        <div class="service-name">YouTube Subscribers</div>
+        <div class="price">₹1,299 / 1K</div>
+      </div>
+      <small>Slow &amp; steady delivery</small>
+    </div>
+
+    <div class="service">
+      <div class="service-top">
+        <div class="service-name">YouTube Views</div>
+        <div class="price">₹799 / 1K</div>
+      </div>
+      <small>Worldwide views</small>
+    </div>
+
+    <div class="section-title">
+      Other Services
+    </div>
+
+    <div class="service">
+      <div class="service-top">
+        <div class="service-name">Telegram Members</div>
+        <div class="price">₹699 / 1K</div>
+      </div>
+      <small>Mixed quality members</small>
+    </div>
+
+    <div class="service">
+      <div class="service-top">
+        <div class="service-name">Facebook Followers</div>
+        <div class="price">₹549 / 1K</div>
+      </div>
+      <small>Worldwide audience</small>
+    </div>
+
+    <div class="service">
+      <div class="service-top">
+        <div class="service-name">TikTok Followers</div>
+        <div class="price">₹499 / 1K</div>
+      </div>
+      <small>Fast delivery</small>
+    </div>
+
+    <button class="btn" style="width:100%;margin-top:15px"
+            onclick="show404()">
+      Place New Order
+    </button>
+
+  </div>
+</div>
+
+
+<!-- SIMULATED 404 -->
+<div id="notfound">
+  <div class="error-box">
+
+    <div class="error-code">404</div>
+
+    <h2>Panel Unavailable</h2>
+
+    <p>
+      The requested service endpoint could not be found.
+      The panel may have been disabled or moved by the administrator.
+    </p>
+
+    <div class="security">
+      ⚠️ Security verification failed.<br><br>
+      Please do not attempt unauthorized access.
+    </div>
+
+    <button class="btn back" onclick="location.reload()">
+      Return to Panel
+    </button>
+
+  </div>
+</div>
+
+
+<script>
+
+function enterPanel(){
+  document.getElementById("warning").style.display="none";
+  document.getElementById("panel").style.display="block";
+}
+
+function show404(){
+  document.getElementById("panel").style.display="none";
+  document.getElementById("notfound").style.display="flex";
+}
+
+</script>
+
+</body>
+  </html>
