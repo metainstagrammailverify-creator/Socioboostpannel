@@ -2,356 +2,428 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SocialBoost Panel</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SocialBoost • Services</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
-
+*{box-sizing:border-box}
 body{
-  background:#080b12;
-  color:#fff;
-  min-height:100vh;
+ margin:0;
+ background:#f4f6f9;
+ color:#17202a;
+ font-family:Arial,sans-serif
 }
-
 .header{
-  padding:20px;
-  background:#111722;
-  border-bottom:1px solid #273142;
+ background:#fff;
+ padding:16px;
+ border-bottom:1px solid #ddd;
+ position:sticky;
+ top:0;
+ z-index:5
 }
-
-.logo{
-  font-size:23px;
-  font-weight:bold;
+.brand{
+ font-size:21px;
+ font-weight:700;
 }
-
-.logo span{
-  color:#7c5cff;
+.brand span{color:#2563eb}
+.verified{
+ display:inline-block;
+ font-size:10px;
+ background:#e8f7ee;
+ color:#168044;
+ padding:4px 7px;
+ border-radius:20px;
+ margin-left:5px
 }
-
 .container{
-  max-width:650px;
-  margin:auto;
-  padding:18px;
+ max-width:650px;
+ margin:auto;
+ padding:14px
 }
-
-/* WARNING */
-#warning{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+.trust{
+ background:#fff;
+ border:1px solid #dce2e8;
+ border-radius:13px;
+ padding:15px;
+ margin-bottom:12px
 }
-
-.warning-box{
-  width:100%;
-  max-width:500px;
-  background:#111722;
-  border:1px solid #ffb020;
-  border-radius:16px;
-  padding:28px 22px;
-  text-align:center;
-  box-shadow:0 0 30px rgba(255,176,32,.12);
+.trust-title{
+ font-weight:bold;
+ color:#168044
 }
-
-.warning-icon{
-  font-size:55px;
-  margin-bottom:15px;
+.trust p{
+ margin:7px 0 0;
+ color:#697586;
+ font-size:12px;
+ line-height:1.5
 }
-
-.warning-box h1{
-  font-size:23px;
-  margin-bottom:12px;
+.safe{
+ color:#168044;
+ font-size:12px;
+ margin-top:10px
 }
-
-.warning-box p{
-  color:#b7becb;
-  line-height:1.6;
-  margin-bottom:22px;
+.danger{
+ background:#fff3f3;
+ border:1px solid #ef9a9a;
+ color:#9b1c1c;
+ padding:12px;
+ border-radius:11px;
+ font-size:12px;
+ line-height:1.5;
+ margin:12px 0
 }
-
-.btn{
-  border:0;
-  border-radius:10px;
-  padding:13px 20px;
-  background:#7c5cff;
-  color:#fff;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
+.title{
+ font-size:18px;
+ font-weight:bold;
+ margin:23px 0 10px
 }
-
-/* PANEL */
-#panel{
-  display:none;
-}
-
-.balance{
-  margin-top:20px;
-  background:linear-gradient(135deg,#171d2a,#111722);
-  border:1px solid #283244;
-  border-radius:15px;
-  padding:20px;
-}
-
-.balance small{
-  color:#8993a5;
-}
-
-.balance h2{
-  margin-top:8px;
-}
-
-.section-title{
-  margin:25px 0 12px;
-  font-size:18px;
-}
-
 .service{
-  background:#111722;
-  border:1px solid #242e3e;
-  border-radius:13px;
-  padding:16px;
-  margin-bottom:10px;
+ background:#fff;
+ border:1px solid #dfe4ea;
+ border-radius:12px;
+ padding:15px;
+ margin:9px 0;
+ cursor:pointer;
+ transition:.15s
 }
-
-.service-top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
+.service:active{
+ transform:scale(.98);
+ background:#f8faff
 }
-
-.service-name{
-  font-weight:bold;
+.row{
+ display:flex;
+ justify-content:space-between;
+ gap:10px
 }
-
+.name{font-weight:bold}
 .price{
-  color:#9b83ff;
-  font-weight:bold;
-  white-space:nowrap;
+ color:#2563eb;
+ font-weight:bold;
+ white-space:nowrap
 }
-
-.service small{
-  display:block;
-  color:#7f8999;
-  margin-top:7px;
+.desc{
+ color:#788493;
+ font-size:12px;
+ margin-top:6px
 }
-
-/* 404 */
-#notfound{
-  display:none;
-  min-height:100vh;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px;
+.badge{
+ display:inline-block;
+ margin-top:8px;
+ background:#edf4ff;
+ color:#2563eb;
+ padding:4px 7px;
+ border-radius:5px;
+ font-size:10px
 }
-
-.error-box{
-  max-width:500px;
+#order,#restricted{display:none}
+.card{
+ background:#fff;
+ border:1px solid #dce2e8;
+ border-radius:14px;
+ padding:20px;
+ margin-top:20px
 }
-
-.error-code{
-  font-size:85px;
-  font-weight:900;
-  letter-spacing:5px;
-  color:#7c5cff;
+.selected{
+ color:#2563eb;
+ font-weight:bold;
+ margin:10px 0 18px
 }
-
-.error-box h2{
-  margin:5px 0 15px;
-  font-size:24px;
+.btn{
+ width:100%;
+ padding:14px;
+ border:0;
+ border-radius:9px;
+ background:#2563eb;
+ color:white;
+ font-weight:bold;
+ margin-top:10px
 }
-
-.error-box p{
-  color:#8993a5;
-  line-height:1.6;
+.back{background:#e8edf3;color:#263442}
+.restrict{
+ text-align:center;
+ margin-top:55px
 }
-
-.security{
-  margin-top:22px;
-  padding:14px;
-  border:1px solid #333d4e;
-  border-radius:10px;
-  color:#aab2c0;
-  font-size:13px;
+.big{font-size:60px}
+.restrict h1{margin:8px 0}
+.restrict p{
+ color:#697586;
+ line-height:1.6;
+ font-size:14px
 }
-
-.back{
-  margin-top:20px;
-  background:#1a2130;
+.alert{
+ background:#fff0f0;
+ border:1px solid #e57373;
+ color:#9b1c1c;
+ border-radius:12px;
+ padding:16px;
+ text-align:left;
+ font-size:13px;
+ line-height:1.6;
+ margin-top:18px
+}
+.footer{
+ text-align:center;
+ color:#8a94a3;
+ font-size:10px;
+ padding:30px
 }
 </style>
 </head>
 
 <body>
 
-<!-- SECURITY SCREEN -->
-<div id="warning">
-  <div class="warning-box">
-    <div class="warning-icon">⚠️</div>
-
-    <h1>Security Notice</h1>
-
-    <p>
-      This panel is currently operating under restricted access.
-      Automated requests and unauthorized access attempts may be
-      blocked by the administrator.
-    </p>
-
-    <button class="btn" onclick="enterPanel()">
-      I Understand — Continue
-    </button>
-  </div>
-</div>
-
-
-<!-- FAKE PANEL -->
 <div id="panel">
 
-  <div class="header">
-    <div class="logo">
-      Social<span>Boost</span> Panel
-    </div>
-  </div>
+<div class="header">
+ <div class="brand">
+  Social<span>Boost</span>
+  <span class="verified">✓ DEMO</span>
+ </div>
+</div>
 
-  <div class="container">
+<div class="container">
 
-    <div class="balance">
-      <small>Account Balance</small>
-      <h2>₹0.00</h2>
-    </div>
+<div class="trust">
+ <div class="trust-title">🛡️ Security Protected</div>
+ <p>
+ Service environment is operating with restricted access
+ and security monitoring.
+ </p>
+ <div class="safe">✓ No password required for public-profile services</div>
+</div>
 
-    <div class="section-title">
-      Instagram Services
-    </div>
-
-    <div class="service">
-      <div class="service-top">
-        <div class="service-name">Instagram Followers</div>
-        <div class="price">₹456 / 1K</div>
-      </div>
-      <small>High quality followers • Start 0–30 min</small>
-    </div>
-
-    <div class="service">
-      <div class="service-top">
-        <div class="service-name">Instagram Likes</div>
-        <div class="price">₹189 / 1K</div>
-      </div>
-      <small>Fast delivery • Refill unavailable</small>
-    </div>
-
-    <div class="service">
-      <div class="service-top">
-        <div class="service-name">Instagram Views</div>
-        <div class="price">₹99 / 1K</div>
-      </div>
-      <small>Fast views • Worldwide</small>
-    </div>
-
-    <div class="section-title">
-      YouTube Services
-    </div>
-
-    <div class="service">
-      <div class="service-top">
-        <div class="service-name">YouTube Subscribers</div>
-        <div class="price">₹1,299 / 1K</div>
-      </div>
-      <small>Slow &amp; steady delivery</small>
-    </div>
-
-    <div class="service">
-      <div class="service-top">
-        <div class="service-name">YouTube Views</div>
-        <div class="price">₹799 / 1K</div>
-      </div>
-      <small>Worldwide views</small>
-    </div>
-
-    <div class="section-title">
-      Other Services
-    </div>
-
-    <div class="service">
-      <div class="service-top">
-        <div class="service-name">Telegram Members</div>
-        <div class="price">₹699 / 1K</div>
-      </div>
-      <small>Mixed quality members</small>
-    </div>
-
-    <div class="service">
-      <div class="service-top">
-        <div class="service-name">Facebook Followers</div>
-        <div class="price">₹549 / 1K</div>
-      </div>
-      <small>Worldwide audience</small>
-    </div>
-
-    <div class="service">
-      <div class="service-top">
-        <div class="service-name">TikTok Followers</div>
-        <div class="price">₹499 / 1K</div>
-      </div>
-      <small>Fast delivery</small>
-    </div>
-
-    <button class="btn" style="width:100%;margin-top:15px"
-            onclick="show404()">
-      Place New Order
-    </button>
-
-  </div>
+<div class="danger">
+ 🔴 <b>IMPORTANT SAFETY WARNING</b><br>
+ Never provide your password, OTP, 2FA code,
+ recovery code, payment PIN or private API key
+ to a third-party website.
 </div>
 
 
-<!-- SIMULATED 404 -->
-<div id="notfound">
-  <div class="error-box">
+<div class="title">📸 Instagram</div>
 
-    <div class="error-code">404</div>
+<div class="service"
+onclick="order('Instagram Followers — 1K','₹456')">
+<div class="row">
+<div class="name">Instagram Followers — 1K</div>
+<div class="price">₹456</div>
+</div>
+<div class="desc">Worldwide • Fast delivery</div>
+<span class="badge">FOLLOWERS</span>
+</div>
 
-    <h2>Panel Unavailable</h2>
+<div class="service"
+onclick="order('Instagram Likes — 1K','₹189')">
+<div class="row">
+<div class="name">Instagram Likes — 1K</div>
+<div class="price">₹189</div>
+</div>
+<div class="desc">Post engagement</div>
+<span class="badge">LIKES</span>
+</div>
 
-    <p>
-      The requested service endpoint could not be found.
-      The panel may have been disabled or moved by the administrator.
-    </p>
+<div class="service"
+onclick="order('Instagram Views — 1K','₹99')">
+<div class="row">
+<div class="name">Instagram Views — 1K</div>
+<div class="price">₹99</div>
+</div>
+<div class="desc">Video views</div>
+<span class="badge">VIEWS</span>
+</div>
 
-    <div class="security">
-      ⚠️ Security verification failed.<br><br>
-      Please do not attempt unauthorized access.
-    </div>
 
-    <button class="btn back" onclick="location.reload()">
-      Return to Panel
-    </button>
+<div class="title">▶️ YouTube</div>
 
-  </div>
+<div class="service"
+onclick="order('YouTube Subscribers — 1K','₹1,299')">
+<div class="row">
+<div class="name">YouTube Subscribers — 1K</div>
+<div class="price">₹1,299</div>
+</div>
+<div class="desc">Worldwide subscribers</div>
+<span class="badge">SUBSCRIBERS</span>
+</div>
+
+<div class="service"
+onclick="order('YouTube Views — 1K','₹799')">
+<div class="row">
+<div class="name">YouTube Views — 1K</div>
+<div class="price">₹799</div>
+</div>
+<div class="desc">Video views</div>
+<span class="badge">VIEWS</span>
+</div>
+
+
+<div class="title">✈️ Telegram</div>
+
+<div class="service"
+onclick="order('Telegram Members — 1K','₹699')">
+<div class="row">
+<div class="name">Telegram Members — 1K</div>
+<div class="price">₹699</div>
+</div>
+<div class="desc">Channel / group members</div>
+<span class="badge">MEMBERS</span>
+</div>
+
+
+<div class="title">🔵 Facebook</div>
+
+<div class="service"
+onclick="order('Facebook Followers — 1K','₹549')">
+<div class="row">
+<div class="name">Facebook Followers — 1K</div>
+<div class="price">₹549</div>
+</div>
+<div class="desc">Worldwide followers</div>
+<span class="badge">FOLLOWERS</span>
+</div>
+
+
+<div class="title">𝕏 X / Twitter</div>
+
+<div class="service"
+onclick="order('X Followers — 1K','₹599')">
+<div class="row">
+<div class="name">X Followers — 1K</div>
+<div class="price">₹599</div>
+</div>
+<div class="desc">Worldwide followers</div>
+<span class="badge">FOLLOWERS</span>
+</div>
+
+
+<div class="danger">
+ ⚠️ <b>STAY SAFE ONLINE</b><br>
+ Unknown panels and suspicious marketplaces can
+ expose account credentials and personal information.
+ Never enter sensitive information just because a
+ website looks professional.
+</div>
+
+<div class="footer">
+ SocialBoost • Fictional demonstration interface
+</div>
+
+</div>
+</div>
+
+
+<!-- ORDER -->
+
+<div id="order">
+
+<div class="header">
+ <div class="brand">Social<span>Boost</span></div>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Place Order</h2>
+
+<div class="selected" id="selected"></div>
+
+<div class="danger">
+ 🔴 <b>Credential Safety</b><br>
+ This demo never asks for your password,
+ OTP or recovery code.
+ </div>
+
+<button class="btn" onclick="restricted()">
+ PLACE ORDER
+</button>
+
+<button class="btn back" onclick="back()">
+ BACK
+</button>
+
+</div>
+</div>
+</div>
+
+
+<!-- RESTRICTED -->
+
+<div id="restricted">
+
+<div class="container">
+
+<div class="restrict">
+
+<div class="big">⚠️</div>
+
+<h1>Service Restricted</h1>
+
+<p>
+ The requested service is currently unavailable.
+ The service endpoint has been placed under
+ temporary security restrictions.
+</p>
+
+<div class="alert">
+
+🔴 <b>DANGER / SECURITY NOTICE</b><br><br>
+
+Never give your social-media password,
+OTP, 2FA code, recovery code, payment PIN
+or private API key to an unknown service.
+
+<br><br>
+
+⚠️ A professional-looking website is not
+proof that a service is trustworthy.
+
+<br><br>
+
+Dark-web marketplaces and suspicious
+third-party services can expose your identity,
+accounts and personal information.
+
+<br><br>
+
+<b>Stay safe. Close suspicious pages and
+never share confidential credentials.</b>
+
+</div>
+
+<button class="btn back" onclick="back()">
+ RETURN
+</button>
+
+</div>
+
+</div>
 </div>
 
 
 <script>
 
-function enterPanel(){
-  document.getElementById("warning").style.display="none";
-  document.getElementById("panel").style.display="block";
+function order(name,price){
+ document.getElementById("panel").style.display="none";
+ document.getElementById("order").style.display="block";
+ document.getElementById("selected").innerHTML=
+ name+" — "+price;
+ window.scrollTo(0,0);
 }
 
-function show404(){
-  document.getElementById("panel").style.display="none";
-  document.getElementById("notfound").style.display="flex";
+function restricted(){
+ document.getElementById("order").style.display="none";
+ document.getElementById("restricted").style.display="block";
+ window.scrollTo(0,0);
+}
+
+function back(){
+ document.getElementById("restricted").style.display="none";
+ document.getElementById("order").style.display="none";
+ document.getElementById("panel").style.display="block";
+ window.scrollTo(0,0);
 }
 
 </script>
 
 </body>
-  </html>
+</html>
