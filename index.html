@@ -3,342 +3,441 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SocialBoost • Services</title>
+<title>Social Services Portal</title>
 
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;
- background:#f4f6f9;
+ background:#f1f4f8;
  color:#17202a;
- font-family:Arial,sans-serif
+ font-family:Arial,Helvetica,sans-serif;
 }
-.header{
+header{
  background:#fff;
- padding:16px;
- border-bottom:1px solid #ddd;
+ border-bottom:1px solid #dce1e7;
  position:sticky;
  top:0;
- z-index:5
+ z-index:20;
 }
-.brand{
- font-size:21px;
- font-weight:700;
-}
-.brand span{color:#2563eb}
-.verified{
- display:inline-block;
- font-size:10px;
- background:#e8f7ee;
- color:#168044;
- padding:4px 7px;
- border-radius:20px;
- margin-left:5px
-}
-.container{
- max-width:650px;
+.nav{
+ max-width:900px;
  margin:auto;
- padding:14px
+ padding:15px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
 }
-.trust{
+.logo{font-size:21px;font-weight:800}
+.logo span{color:#2864e8}
+.status{
+ font-size:10px;
+ background:#e8f7ed;
+ color:#17733c;
+ padding:6px 9px;
+ border-radius:20px;
+}
+.wrap{max-width:900px;margin:auto;padding:15px}
+
+.hero{
  background:#fff;
  border:1px solid #dce2e8;
- border-radius:13px;
- padding:15px;
- margin-bottom:12px
+ border-radius:15px;
+ padding:20px;
+ margin:15px 0;
 }
-.trust-title{
- font-weight:bold;
- color:#168044
-}
-.trust p{
- margin:7px 0 0;
- color:#697586;
+.hero h1{margin:0 0 7px;font-size:24px}
+.hero p{margin:0;color:#6d7887;line-height:1.5;font-size:13px}
+
+.security{
+ margin-top:15px;
+ padding:12px;
+ border-radius:10px;
+ background:#fff7e7;
+ border:1px solid #e5b85c;
  font-size:12px;
- line-height:1.5
-}
-.safe{
- color:#168044;
- font-size:12px;
- margin-top:10px
+ line-height:1.55;
 }
 .danger{
- background:#fff3f3;
- border:1px solid #ef9a9a;
- color:#9b1c1c;
+ background:#fff0f0;
+ border:1px solid #e68b91;
+ color:#8d2028;
  padding:12px;
- border-radius:11px;
+ border-radius:10px;
  font-size:12px;
- line-height:1.5;
- margin:12px 0
+ line-height:1.55;
+ margin:12px 0;
 }
-.title{
+
+.search{
+ width:100%;
+ padding:14px;
+ border:1px solid #cfd6df;
+ border-radius:10px;
+ background:white;
+ font-size:14px;
+ outline:none;
+}
+
+.categories{
+ display:flex;
+ gap:7px;
+ overflow-x:auto;
+ margin:12px 0;
+ padding-bottom:3px;
+}
+.cat{
+ white-space:nowrap;
+ border:1px solid #d3d9e1;
+ background:#fff;
+ padding:9px 12px;
+ border-radius:20px;
+ font-size:11px;
+ cursor:pointer;
+}
+.cat.active{
+ background:#2864e8;
+ color:white;
+ border-color:#2864e8;
+}
+
+.category-title{
+ margin:25px 0 10px;
  font-size:18px;
- font-weight:bold;
- margin:23px 0 10px
+ font-weight:800;
 }
+
 .service{
  background:#fff;
- border:1px solid #dfe4ea;
+ border:1px solid #dce2e8;
  border-radius:12px;
- padding:15px;
- margin:9px 0;
+ padding:14px;
+ margin:8px 0;
  cursor:pointer;
- transition:.15s
+ transition:.15s;
 }
 .service:active{
- transform:scale(.98);
- background:#f8faff
+ transform:scale(.985);
+ background:#f8faff;
 }
 .row{
  display:flex;
  justify-content:space-between;
- gap:10px
+ gap:10px;
 }
-.name{font-weight:bold}
+.service-name{
+ font-weight:700;
+ font-size:14px;
+}
 .price{
- color:#2563eb;
- font-weight:bold;
- white-space:nowrap
+ color:#2864e8;
+ font-weight:800;
+ white-space:nowrap;
 }
-.desc{
- color:#788493;
- font-size:12px;
- margin-top:6px
+.meta{
+ color:#7b8694;
+ font-size:11px;
+ margin-top:6px;
 }
-.badge{
- display:inline-block;
- margin-top:8px;
- background:#edf4ff;
- color:#2563eb;
- padding:4px 7px;
- border-radius:5px;
- font-size:10px
+.service-id{
+ color:#9aa3ae;
+ font-size:9px;
+ margin-top:7px;
 }
+
 #order,#restricted{display:none}
-.card{
- background:#fff;
- border:1px solid #dce2e8;
- border-radius:14px;
- padding:20px;
- margin-top:20px
-}
-.selected{
- color:#2563eb;
- font-weight:bold;
- margin:10px 0 18px
-}
-.btn{
- width:100%;
- padding:14px;
+
+.back{
  border:0;
+ background:#e8edf3;
+ color:#263442;
+ padding:12px;
  border-radius:9px;
- background:#2563eb;
- color:white;
+ width:100%;
+ margin-top:10px;
  font-weight:bold;
- margin-top:10px
 }
-.back{background:#e8edf3;color:#263442}
-.restrict{
+
+.order-card{
+ background:#fff;
+ border:1px solid #d7dee6;
+ border-radius:15px;
+ padding:18px;
+ margin-top:18px;
+}
+
+.order-card h2{margin-top:0}
+
+.selected{
+ background:#f5f7fa;
+ border:1px solid #e0e5eb;
+ border-radius:10px;
+ padding:13px;
+ margin:12px 0;
+}
+
+.field{
+ margin:14px 0;
+}
+.field label{
+ display:block;
+ font-size:11px;
+ font-weight:bold;
+ margin-bottom:6px;
+ color:#566170;
+}
+.field input,
+.field select{
+ width:100%;
+ padding:13px;
+ border:1px solid #ccd4dd;
+ border-radius:8px;
+ background:#f9fafb;
+}
+.field input:disabled,
+.field select:disabled{
+ opacity:.7;
+}
+
+.fake-progress{
+ height:7px;
+ background:#e8ecf1;
+ border-radius:10px;
+ overflow:hidden;
+ margin:15px 0;
+}
+.fake-progress div{
+ width:68%;
+ height:100%;
+ background:#2864e8;
+}
+
+.primary{
+ width:100%;
+ border:0;
+ background:#2864e8;
+ color:white;
+ padding:14px;
+ border-radius:9px;
+ font-weight:bold;
+}
+
+.login-box{
+ margin-top:18px;
+ padding-top:15px;
+ border-top:1px solid #e1e5ea;
+}
+.login-btn{
+ width:100%;
+ padding:12px;
+ margin-top:7px;
+ border:1px solid #d5dbe2;
+ border-radius:8px;
+ background:#f5f6f8;
+ color:#7a838e;
+ font-weight:bold;
+ cursor:not-allowed;
+}
+
+.restricted-wrap{
+ min-height:85vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+}
+.restricted-card{
+ max-width:600px;
+ background:#fff;
+ border:1px solid #d8dfe7;
+ border-radius:16px;
+ padding:25px;
  text-align:center;
- margin-top:55px
 }
-.big{font-size:60px}
-.restrict h1{margin:8px 0}
-.restrict p{
+.warning-icon{font-size:55px}
+.restricted-card h1{margin:8px 0}
+.restricted-card p{
  color:#697586;
  line-height:1.6;
- font-size:14px
+ font-size:13px;
 }
 .alert{
+ text-align:left;
  background:#fff0f0;
- border:1px solid #e57373;
- color:#9b1c1c;
+ border:1px solid #e2767d;
+ color:#8e2028;
  border-radius:12px;
  padding:16px;
- text-align:left;
- font-size:13px;
- line-height:1.6;
- margin-top:18px
+ font-size:12px;
+ line-height:1.65;
+ margin:18px 0;
 }
-.footer{
+.code{
+ background:#151a22;
+ color:#aeb8c6;
+ border-radius:8px;
+ padding:13px;
+ text-align:left;
+ font-family:monospace;
+ font-size:10px;
+ overflow:auto;
+}
+footer{
  text-align:center;
+ padding:30px;
  color:#8a94a3;
  font-size:10px;
- padding:30px
 }
+.hidden{display:none}
 </style>
 </head>
 
 <body>
 
-<div id="panel">
+<header>
+ <div class="nav">
+  <div class="logo">Social<span>Boost</span></div>
+  <div class="status">● SYSTEM ONLINE</div>
+ </div>
+</header>
 
-<div class="header">
- <div class="brand">
-  Social<span>Boost</span>
-  <span class="verified">✓ DEMO</span>
+<!-- MAIN -->
+
+<div id="panel">
+<div class="wrap">
+
+<div class="hero">
+ <h1>Social Services Portal</h1>
+ <p>
+ Professional service management interface with
+ automated order processing and service monitoring.
+ </p>
+
+ <div class="security">
+ 🛡️ <b>Protected Environment</b><br>
+ Service endpoints are monitored for unusual activity.
+ Certain operations may be restricted automatically.
  </div>
 </div>
 
-<div class="container">
-
-<div class="trust">
- <div class="trust-title">🛡️ Security Protected</div>
- <p>
- Service environment is operating with restricted access
- and security monitoring.
- </p>
- <div class="safe">✓ No password required for public-profile services</div>
+<div class="danger">
+ 🔴 <b>ACCOUNT SAFETY</b><br>
+ Never provide your social-media password, OTP,
+ recovery code, 2FA secret, payment PIN or private
+ API credentials to third-party services.
 </div>
+
+<input id="search"
+ class="search"
+ placeholder="Search 60+ services..."
+ oninput="searchServices()">
+
+<div class="categories">
+ <button class="cat active" onclick="filterCat('all',this)">All</button>
+ <button class="cat" onclick="filterCat('Instagram',this)">Instagram</button>
+ <button class="cat" onclick="filterCat('YouTube',this)">YouTube</button>
+ <button class="cat" onclick="filterCat('Facebook',this)">Facebook</button>
+ <button class="cat" onclick="filterCat('Telegram',this)">Telegram</button>
+ <button class="cat" onclick="filterCat('TikTok',this)">TikTok</button>
+ <button class="cat" onclick="filterCat('X',this)">X</button>
+ <button class="cat" onclick="filterCat('Other',this)">Other</button>
+</div>
+
+<div id="services"></div>
 
 <div class="danger">
- 🔴 <b>IMPORTANT SAFETY WARNING</b><br>
- Never provide your password, OTP, 2FA code,
- recovery code, payment PIN or private API key
- to a third-party website.
+ ⚠️ <b>FINAL SECURITY REMINDER</b><br>
+ A website looking professional does not make it
+ trustworthy. Never give confidential credentials
+ merely because a service requests them.
 </div>
 
-
-<div class="title">📸 Instagram</div>
-
-<div class="service"
-onclick="order('Instagram Followers — 1K','₹456')">
-<div class="row">
-<div class="name">Instagram Followers — 1K</div>
-<div class="price">₹456</div>
-</div>
-<div class="desc">Worldwide • Fast delivery</div>
-<span class="badge">FOLLOWERS</span>
-</div>
-
-<div class="service"
-onclick="order('Instagram Likes — 1K','₹189')">
-<div class="row">
-<div class="name">Instagram Likes — 1K</div>
-<div class="price">₹189</div>
-</div>
-<div class="desc">Post engagement</div>
-<span class="badge">LIKES</span>
-</div>
-
-<div class="service"
-onclick="order('Instagram Views — 1K','₹99')">
-<div class="row">
-<div class="name">Instagram Views — 1K</div>
-<div class="price">₹99</div>
-</div>
-<div class="desc">Video views</div>
-<span class="badge">VIEWS</span>
-</div>
-
-
-<div class="title">▶️ YouTube</div>
-
-<div class="service"
-onclick="order('YouTube Subscribers — 1K','₹1,299')">
-<div class="row">
-<div class="name">YouTube Subscribers — 1K</div>
-<div class="price">₹1,299</div>
-</div>
-<div class="desc">Worldwide subscribers</div>
-<span class="badge">SUBSCRIBERS</span>
-</div>
-
-<div class="service"
-onclick="order('YouTube Views — 1K','₹799')">
-<div class="row">
-<div class="name">YouTube Views — 1K</div>
-<div class="price">₹799</div>
-</div>
-<div class="desc">Video views</div>
-<span class="badge">VIEWS</span>
-</div>
-
-
-<div class="title">✈️ Telegram</div>
-
-<div class="service"
-onclick="order('Telegram Members — 1K','₹699')">
-<div class="row">
-<div class="name">Telegram Members — 1K</div>
-<div class="price">₹699</div>
-</div>
-<div class="desc">Channel / group members</div>
-<span class="badge">MEMBERS</span>
-</div>
-
-
-<div class="title">🔵 Facebook</div>
-
-<div class="service"
-onclick="order('Facebook Followers — 1K','₹549')">
-<div class="row">
-<div class="name">Facebook Followers — 1K</div>
-<div class="price">₹549</div>
-</div>
-<div class="desc">Worldwide followers</div>
-<span class="badge">FOLLOWERS</span>
-</div>
-
-
-<div class="title">𝕏 X / Twitter</div>
-
-<div class="service"
-onclick="order('X Followers — 1K','₹599')">
-<div class="row">
-<div class="name">X Followers — 1K</div>
-<div class="price">₹599</div>
-</div>
-<div class="desc">Worldwide followers</div>
-<span class="badge">FOLLOWERS</span>
-</div>
-
-
-<div class="danger">
- ⚠️ <b>STAY SAFE ONLINE</b><br>
- Unknown panels and suspicious marketplaces can
- expose account credentials and personal information.
- Never enter sensitive information just because a
- website looks professional.
-</div>
-
-<div class="footer">
- SocialBoost • Fictional demonstration interface
-</div>
+<footer>
+SocialBoost Services Portal<br>
+Service availability may change without notice.
+</footer>
 
 </div>
 </div>
 
 
-<!-- ORDER -->
+<!-- ORDER PAGE -->
 
 <div id="order">
+<div class="wrap">
 
-<div class="header">
- <div class="brand">Social<span>Boost</span></div>
+<div class="order-card">
+
+<h2>Service Configuration</h2>
+
+<div class="selected">
+ <b id="orderName"></b><br>
+ <span id="orderInfo"></span>
 </div>
 
-<div class="container">
+<div class="security">
+ 🔐 <b>Secure order configuration</b><br>
+ Only public information should be used.
+ Passwords and authentication secrets are never
+ required.
+</div>
 
-<div class="card">
+<div class="field">
+<label>SERVICE ID</label>
+<input id="serviceId" disabled>
+</div>
 
-<h2>Place Order</h2>
+<div class="field">
+<label>TARGET URL</label>
+<input placeholder="https://..." disabled>
+</div>
 
-<div class="selected" id="selected"></div>
+<div class="field">
+<label>QUANTITY</label>
+<select disabled>
+<option>1,000</option>
+<option>2,000</option>
+<option>5,000</option>
+<option>10,000</option>
+</select>
+</div>
+
+<div class="field">
+<label>DELIVERY MODE</label>
+<select disabled>
+<option>Standard delivery</option>
+<option>High priority</option>
+<option>Gradual delivery</option>
+</select>
+</div>
+
+<div class="fake-progress">
+<div></div>
+</div>
 
 <div class="danger">
- 🔴 <b>Credential Safety</b><br>
- This demo never asks for your password,
- OTP or recovery code.
+ 🔴 <b>Credential protection</b><br>
+ Do not enter a password, OTP, recovery code,
+ API secret or payment PIN into this form.
  </div>
 
-<button class="btn" onclick="restricted()">
- PLACE ORDER
+<div class="login-box">
+ <b style="font-size:13px">Optional account access</b>
+
+ <button class="login-btn" disabled>
+  Continue with Google — unavailable
+ </button>
+
+ <button class="login-btn" disabled>
+  Continue with Apple — unavailable
+ </button>
+</div>
+
+<button class="primary" onclick="restricted()">
+ CONTINUE TO ORDER
 </button>
 
-<button class="btn back" onclick="back()">
- BACK
+<button class="back" onclick="backPanel()">
+ ← BACK TO SERVICES
 </button>
 
 </div>
@@ -350,78 +449,254 @@ onclick="order('X Followers — 1K','₹599')">
 
 <div id="restricted">
 
-<div class="container">
+<div class="restricted-wrap">
+<div class="restricted-card">
 
-<div class="restrict">
-
-<div class="big">⚠️</div>
+<div class="warning-icon">⚠️</div>
 
 <h1>Service Restricted</h1>
 
 <p>
- The requested service is currently unavailable.
- The service endpoint has been placed under
- temporary security restrictions.
+ The requested service endpoint cannot currently
+ process this operation.
 </p>
 
-<div class="alert">
-
-🔴 <b>DANGER / SECURITY NOTICE</b><br><br>
-
-Never give your social-media password,
-OTP, 2FA code, recovery code, payment PIN
-or private API key to an unknown service.
-
-<br><br>
-
-⚠️ A professional-looking website is not
-proof that a service is trustworthy.
-
-<br><br>
-
-Dark-web marketplaces and suspicious
-third-party services can expose your identity,
-accounts and personal information.
-
-<br><br>
-
-<b>Stay safe. Close suspicious pages and
-never share confidential credentials.</b>
-
+<div class="code">
+STATUS: ACCESS_RESTRICTED<br>
+ENDPOINT: TEMPORARILY_DISABLED<br>
+SECURITY: ELEVATED<br>
+REQUEST: BLOCKED<br>
+CODE: SRV-403-SEC
 </div>
 
-<button class="btn back" onclick="back()">
- RETURN
+<div class="alert">
+ 🔴 <b>SECURITY WARNING</b><br><br>
+
+ Never give your password, OTP, 2FA code,
+ recovery code, payment PIN or private API key
+ to an unknown website.
+
+ <br><br>
+
+ ⚠️ Suspicious third-party services can expose
+ accounts and personal information. Dark-web
+ marketplaces and unknown services can create
+ serious privacy and security risks.
+
+ <br><br>
+
+ <b>This page has not accessed or hacked your device.</b>
+ This is a general online-safety warning.
+</div>
+
+<button class="primary" onclick="backPanel()">
+ RETURN TO SERVICES
 </button>
 
 </div>
-
 </div>
 </div>
 
 
 <script>
 
-function order(name,price){
+const services = [
+
+["Instagram","Followers 1K","₹233","Followers","Worldwide"],
+["Instagram","Followers 2K","₹466","Followers","Worldwide"],
+["Instagram","Followers 5K","₹1,165","Followers","Worldwide"],
+["Instagram","Likes 1K","₹233","Likes","Fast"],
+["Instagram","Likes 2K","₹466","Likes","Fast"],
+["Instagram","Likes 5K","₹1,165","Likes","Fast"],
+["Instagram","Views 1K","₹233","Views","Worldwide"],
+["Instagram","Views 5K","₹1,165","Views","Worldwide"],
+["Instagram","Comments 100","₹233","Comments","Custom"],
+["Instagram","Saves 1K","₹233","Saves","Worldwide"],
+
+["YouTube","Subscribers 1K","₹233","Subscribers","Worldwide"],
+["YouTube","Subscribers 2K","₹466","Subscribers","Worldwide"],
+["YouTube","Subscribers 5K","₹1,165","Subscribers","Worldwide"],
+["YouTube","Views 1K","₹233","Views","Worldwide"],
+["YouTube","Views 5K","₹1,165","Views","Worldwide"],
+["YouTube","Views 10K","₹2,330","Views","Worldwide"],
+["YouTube","Likes 1K","₹233","Likes","Worldwide"],
+["YouTube","Likes 2K","₹466","Likes","Worldwide"],
+["YouTube","Comments 100","₹233","Comments","Custom"],
+["YouTube","Watch Time","₹466","Watch Time","Gradual"],
+
+["Facebook","Followers 1K","₹233","Followers","Worldwide"],
+["Facebook","Followers 2K","₹466","Followers","Worldwide"],
+["Facebook","Likes 1K","₹233","Likes","Worldwide"],
+["Facebook","Page Likes 1K","₹233","Page Likes","Worldwide"],
+["Facebook","Post Reactions 1K","₹233","Reactions","Worldwide"],
+["Facebook","Video Views 1K","₹233","Views","Fast"],
+["Facebook","Comments 100","₹233","Comments","Custom"],
+["Facebook","Shares 1K","₹233","Shares","Worldwide"],
+
+["Telegram","Members 1K","₹233","Members","Worldwide"],
+["Telegram","Members 2K","₹466","Members","Worldwide"],
+["Telegram","Members 5K","₹1,165","Members","Worldwide"],
+["Telegram","Post Views 1K","₹233","Views","Fast"],
+["Telegram","Post Views 5K","₹1,165","Views","Fast"],
+["Telegram","Reactions 1K","₹233","Reactions","Worldwide"],
+["Telegram","Comments 100","₹233","Comments","Custom"],
+["Telegram","Channel Boost","₹466","Boost","Standard"],
+
+["TikTok","Followers 1K","₹233","Followers","Worldwide"],
+["TikTok","Followers 2K","₹466","Followers","Worldwide"],
+["TikTok","Likes 1K","₹233","Likes","Fast"],
+["TikTok","Likes 5K","₹1,165","Likes","Fast"],
+["TikTok","Views 1K","₹233","Views","Worldwide"],
+["TikTok","Views 10K","₹2,330","Views","Worldwide"],
+["TikTok","Shares 1K","₹233","Shares","Worldwide"],
+["TikTok","Comments 100","₹233","Comments","Custom"],
+
+["X","Followers 1K","₹233","Followers","Worldwide"],
+["X","Followers 2K","₹466","Followers","Worldwide"],
+["X","Likes 1K","₹233","Likes","Worldwide"],
+["X","Views 1K","₹233","Views","Worldwide"],
+["X","Reposts 1K","₹233","Reposts","Worldwide"],
+["X","Bookmarks 1K","₹233","Bookmarks","Worldwide"],
+["X","Comments 100","₹233","Comments","Custom"],
+
+["Other","Discord Members 1K","₹233","Members","Worldwide"],
+["Other","Twitch Followers 1K","₹233","Followers","Worldwide"],
+["Other","Reddit Followers 1K","₹233","Followers","Worldwide"],
+["Other","Spotify Plays 1K","₹233","Plays","Worldwide"],
+["Other","Podcast Plays 1K","₹233","Plays","Worldwide"],
+["Other","Website Traffic 1K","₹233","Traffic","Worldwide"],
+["Other","Live Viewers 100","₹233","Viewers","Standard"],
+["Other","Profile Visits 1K","₹233","Visits","Worldwide"],
+["Other","Engagement Package 1K","₹466","Engagement","Mixed"],
+["Other","Premium Growth Package","₹1,165","Package","Standard"]
+];
+
+let currentCategory="all";
+
+function render(list){
+
+ const box=document.getElementById("services");
+ box.innerHTML="";
+
+ let last="";
+
+ list.forEach((s,i)=>{
+
+   if(s[0]!==last){
+    box.innerHTML+=
+    '<div class="category-title">'+
+    icon(s[0])+" "+s[0]+"</div>";
+    last=s[0];
+   }
+
+   const id="SB-"+String(i+1).padStart(4,"0");
+
+   box.innerHTML+=`
+   <div class="service"
+    data-cat="${s[0]}"
+    data-search="${s.join(" ").toLowerCase()}"
+    onclick="openOrder(${i})">
+
+    <div class="row">
+     <div class="service-name">${s[1]}</div>
+     <div class="price">${s[2]}</div>
+    </div>
+
+    <div class="meta">
+     ${s[3]} • ${s[4]}
+    </div>
+
+    <div class="service-id">
+     SERVICE ID: ${id}
+    </div>
+
+   </div>`;
+ });
+}
+
+function icon(cat){
+ if(cat==="Instagram")return"📸";
+ if(cat==="YouTube")return"▶️";
+ if(cat==="Facebook")return"🔵";
+ if(cat==="Telegram")return"✈️";
+ if(cat==="TikTok")return"🎵";
+ if(cat==="X")return"𝕏";
+ return"🌐";
+}
+
+function filterCat(cat,btn){
+
+ currentCategory=cat;
+
+ document.querySelectorAll(".cat")
+ .forEach(x=>x.classList.remove("active"));
+
+ btn.classList.add("active");
+
+ applySearch();
+}
+
+function searchServices(){
+ applySearch();
+}
+
+function applySearch(){
+
+ const q=document.getElementById("search")
+ .value.toLowerCase();
+
+ let list=services.filter(s=>{
+
+   const categoryOK=
+   currentCategory==="all" ||
+   s[0]===currentCategory;
+
+   const text=s.join(" ").toLowerCase();
+
+   return categoryOK && text.includes(q);
+ });
+
+ render(list);
+}
+
+function openOrder(index){
+
+ const s=services[index];
+
  document.getElementById("panel").style.display="none";
  document.getElementById("order").style.display="block";
- document.getElementById("selected").innerHTML=
- name+" — "+price;
+ document.getElementById("restricted").style.display="none";
+
+ document.getElementById("orderName").innerText=
+ s[1];
+
+ document.getElementById("orderInfo").innerText=
+ s[0]+" • "+s[2]+" • "+s[4];
+
+ document.getElementById("serviceId").value=
+ "SB-"+String(index+1).padStart(4,"0");
+
  window.scrollTo(0,0);
 }
 
 function restricted(){
+
  document.getElementById("order").style.display="none";
  document.getElementById("restricted").style.display="block";
+
  window.scrollTo(0,0);
 }
 
-function back(){
+function backPanel(){
+
  document.getElementById("restricted").style.display="none";
  document.getElementById("order").style.display="none";
  document.getElementById("panel").style.display="block";
+
  window.scrollTo(0,0);
 }
+
+render(services);
 
 </script>
 
